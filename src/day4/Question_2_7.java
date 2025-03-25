@@ -11,7 +11,7 @@ import java.util.Scanner;
       컴퓨터 : 1승,  사용자 : 2승
       사용자가 우승 하였습니다.
  */
-public class Question_2_6 {
+public class Question_2_7 {
   public static void main(String[] args) {
     Random random = new Random();
     int computer = random.nextInt(3) + 1;  // 임의의 정수 발생
@@ -21,12 +21,20 @@ public class Question_2_6 {
     int computerCnt = 0;
     int userCnt = 0;
 
-    for (int i = 0; i < 3; i++ ) {
+    int cnt = 0;
+    while( cnt < 3 ) {
       System.out.println(">> 가위 바위 보 게임 <<");
       System.out.println("메뉴 : 가위(1), 바위(2), 보(3), 종료(0)");
       System.out.printf("선택 > ");
       int user = scanner.nextInt();
 //    System.out.println("user = " + user);
+
+      if(user < 0 || user > 3){
+        System.out.println("0~3 사이의 값을 입력하세요!");
+        continue;
+      }
+      cnt++;
+
       if( user == 0){
         break; // 가장 가까운 반복문 1개를 빠져나간다.
       }
