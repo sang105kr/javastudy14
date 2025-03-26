@@ -6,10 +6,12 @@ public class Method_1 {
   //1. 반환타입(x), 매개변수(x)
   public static void doSomething(){
     System.out.println("작업 수행");
+    return;
   }
   //2. 반환타입(x), 매개변수(O)
   public static void printMessage( String message){
     System.out.println(message);
+    return;
   }
   //3. 반환타입(O), 매개변수(X)
   public static int getRandomNumber() {
