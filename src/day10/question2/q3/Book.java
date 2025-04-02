@@ -6,12 +6,11 @@ public class Book {
   private String author;
   private int price;
 
-
   //  주어진 값들을 갖는 Book 객체를 생성한다
   public Book(String title, String author, int price) {
-    setTitle(title);
-    setAuthor(author);
-    setPrice(price);
+    this.title = title;
+    this.author = author;
+    this.price = price;
   }
 
   //   도서의 현 상태를 반환한다

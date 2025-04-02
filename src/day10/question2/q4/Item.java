@@ -8,10 +8,10 @@ public class Item {
   private int quantity;  // 수량
 
   //  객체 변수들의 값을 주어진 값들을 초기화하면서 새로운 Item 객체를 생성한다
-  public Item(String itemName, int itemPrice, int numPurchased) {
-    setName(itemName);
-    setPrice(itemPrice);
-    setQuantity(numPurchased);
+  public Item(String name, int price, int quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
   }
 
   //   상품의 현 상태를 반환한다

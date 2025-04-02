@@ -8,10 +8,10 @@ public class CD {
   private int cost;    // 구입가격
 
   //  특정 정보를 가진 새로운 CD 객체를 생성한다
-  public CD(String name, String singer, int price) {
-    setTitle(name);
-    setArtist(singer);
-    setCost(price);
+  public CD(String title, String artist, int cost) {
+    this.title = title;
+    this.artist = artist;
+    this.cost = cost;
   }
 
   // CD의 제목을 주어진 값으로 변경한다
