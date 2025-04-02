@@ -2,9 +2,9 @@ package day10.question.q8;
 // 문제 8: Time.java
 // 시간을 모델한다
 public class Time {
-  public int hour;  // 시
-  public int minute;  // 분
-  public int second;  // 초
+  private int hour;  // 시
+  private int minute;  // 분
+  private int second;  // 초
 
   // 시를 반환한다
   public int getHour() {
