@@ -4,6 +4,7 @@ public class MonetaryCoin extends Coin{
   private int value; //동전의 액면 금액
 
   public MonetaryCoin(int value) {
+    super();
     this.value = value;
   }
 
