@@ -3,7 +3,7 @@ package day11.question.q7;
 import java.util.Random;
 
 public class Coin {
-  final private int HEADS = 1;  // 앞면을 나타내는 상수
+  final private int HEADS = 1;// 앞면을 나타내는 상수
   final private int TAILS = 2;  // 뒷면을 나타내는 상수
   private int face;             // 동전의 현재 면
 

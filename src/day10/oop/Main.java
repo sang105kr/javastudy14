@@ -19,6 +19,7 @@ public class Main {
     sound(animal2);
     sound(dog);
     sound(cat);
+    sound(new Dock());
   }
 
   public static void sound(Animal animal){

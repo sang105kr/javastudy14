@@ -7,12 +7,14 @@ public class Point {
 
   // Point 객체를 기본 값(x_coordinate = y_coordinate = 0)으로 초기화한다.
   public Point() {
+    super();
     setX(0);
     setY(0);
   }
 
   // Point 객체를 특정 x 좌표 값과 특정 y 좌표 값으로 초기화한다.
   public Point(double xval, double yval) {
+    super();
     setX(xval);
     setY(yval);
   }
