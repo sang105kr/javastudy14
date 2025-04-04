@@ -25,19 +25,22 @@ public class HangMan {
       System.out.println("현재 단어 : " + String.valueOf(guessedWord));
       System.out.println("남은 시도 회수 : " + attempts);
 
+      // 한문자 입력받기
       String str = "";
       while (true) {
         System.out.printf("글자를 입력하세요 [1글자(a-z)] : ");
         str = scanner.nextLine();
-        if (str.length() == 1 &&
-            ((str.charAt(0) >= 'a' && str.charAt(0) <= 'z') ||
-                (str.charAt(0) >= 'A' && str.charAt(0) <= 'B'))) {
+        if (str.length() != 1) {
+          System.out.println("잘못된 입력입니다. 1글자 영문자를 입력하세요");
+          continue;
+        }
+        if ((str.charAt(0) >= 'a' && str.charAt(0) <= 'z') ||
+            (str.charAt(0) >= 'A' && str.charAt(0) <= 'B')) {
           str = str.toLowerCase(); // 소문자 변환
           break;
-        } else {
-          System.out.println("잘못된 입력입니다. 1글자 영문자를 입력하세요");
         }
       }
+
       char ch = str.charAt(0);
       boolean isCorrectGuess = false;   //맞춘 글자인지 여부 판단
       // 글자 맞추기
@@ -46,7 +49,7 @@ public class HangMan {
           guessedWord[i] = ch;  //맞춘 글자 업데이트
           isCorrectGuess = true; //맞춘 글자 표시
         }
-      }
+      }// end of while
       // 단어를 모두 맞춘 경우
       if (String.valueOf(guessedWord).equals(word)) {
         System.out.printf("축하합니다! " + word);
@@ -57,7 +60,7 @@ public class HangMan {
         attempts--; //시도횟수 감소
         System.out.println("틀렸습니다. 남은 시도 횟수 : " + attempts);
       }
-    }
+    }// end of while
     // 게임종료 메세지
     System.out.println("다음기회로... 정답은 " + word + "입니다.");
   }
