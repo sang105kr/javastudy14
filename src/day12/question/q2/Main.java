@@ -29,5 +29,6 @@ public class Main {
     };
     HangMan hangMan = new HangMan(words);
     hangMan.run();
+
   }
 }
