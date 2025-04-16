@@ -85,6 +85,7 @@ public class AccountMain {
       accounts[findedIndex] = null;
       System.out.printf("계좌번호 : %s 가 폐지 되었습니다.",accountNumber);
       System.out.println();
+      cntOfAccount--;  // 개좌 개설수 차감
       break;
     }
   }
