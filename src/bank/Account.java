@@ -22,11 +22,39 @@ public class Account {
 
   //기능 :  입금, 출금, 조회
   public void deposit(int money){
+    //1) 1회 입금한도 체크
+    if(money > 40_000){
+      System.out.println("1회 입금한도 초과!");
+      return;
+    }
+    //2) 예치금 10만원 체크
+    if(money + balance > 100_000){
+      System.out.println("예치금 한도 초과!");
+      return;
+    }
+    //3) 입금처리
+    balance += money;
 
+    System.out.printf("입금액 : %d, 잔액: %d", money,balance);
+    System.out.println();
   }
 
   public void withdraw(int money) {
+    //1) 1회 출금한도 체크
+    if(money > 40_000){
+      System.out.println("1회 출금한도 초과!");
+      return;
+    }
+    //2) 잔액 체크
+    if( balance - money < 0){
+      System.out.println("잔액 부족!");
+      return;
+    }
+    //3) 출금처리
+    balance -= money;
 
+    System.out.printf("출금액 : %d, 잔액: %d", money,balance);
+    System.out.println();    
   }
 
   public String getAccountInfo() {
@@ -37,6 +65,14 @@ public class Account {
 
   public String getAccountName() {
     return accountName;
+  }
+
+  public String getAccountNumber() {
+    return accountNumber;
+  }
+
+  public int getBalance() {
+    return balance;
   }
 
   /**

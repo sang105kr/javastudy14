@@ -26,10 +26,13 @@ public class AccountMain {
           closingAccount();
           break;
         case 3 : // 입금
+          deposit();
           break;
         case 4 : // 출금
+          withdraw();
           break;
         case 5 : // 계좌조회(개별)
+          getAccount();
           break;
         case 6 : // 계좌조회(전체)
           listAccount();
@@ -43,6 +46,78 @@ public class AccountMain {
     } // end of while
   }// end of main
 
+  // 입금
+  private static void deposit() {
+
+    while (true) {
+      System.out.print("계좌 번호 : ");
+      String accountNumber = scanner.nextLine();
+      Account findedAccount = findAccount(accountNumber);
+      if(findedAccount == null){
+        System.out.println("찾고자하는 계좌 번호가 존재하지 않습니다.!");
+        continue;
+      }
+      System.out.print("입금액 : ");
+      int money = scanner.nextInt();
+      findedAccount.deposit(money);
+      break;
+
+    } // end of while
+  }// end of method
+
+  // 폐지
+  private static void closingAccount() {
+    while (true) {
+      System.out.print("계좌 번호 : ");
+      String accountNumber = scanner.nextLine();
+      int findedIndex = findIndexOfAccount(accountNumber);
+      if( findedIndex == -1 ){
+        System.out.println("찾고자하는 계좌 번호가 존재하지 않습니다.!");
+        continue;
+      }
+      // 잔액 확인
+      if(accounts[findedIndex].getBalance() > 0){
+        System.out.printf("잔액 : %d 가 있습니다.",accounts[findedIndex].getBalance());
+        System.out.println();
+        return;
+      }
+      // 폐지 처리
+      accounts[findedIndex] = null;
+      System.out.printf("계좌번호 : %s 가 폐지 되었습니다.",accountNumber);
+      System.out.println();
+      break;
+    }
+  }
+
+  // 출금
+  private static void withdraw() {
+    while (true) {
+      System.out.print("계좌 번호 : ");
+      String accountNumber = scanner.nextLine();
+      Account findedAccount = findAccount(accountNumber);
+      if(findedAccount == null){
+        System.out.println("찾고자하는 계좌 번호가 존재하지 않습니다.!");
+        continue;
+      }
+      System.out.print("출금액 : ");
+      int money = scanner.nextInt();
+      findedAccount.withdraw(money);
+      break;
+    } // end of while
+  }
+
+  // 계좌 조회(개별)
+  private static void getAccount() {
+    System.out.print("계좌 번호 : ");
+    String accountNumber = scanner.nextLine();
+    Account findedAccount = findAccount(accountNumber);
+    if(findedAccount != null){
+      System.out.println(findedAccount.getAccountInfo());
+    }else{
+      System.out.println("찾고자하는 계좌 번호가 존재하지 않습니다.!");
+    }
+  }
+
   // 전체조회
   private static void listAccount() {
     for (Account account : accounts) {
@@ -52,7 +127,32 @@ public class AccountMain {
     }
   }
 
-  private static void closingAccount() {
+  // 계좌번호로 계좌 찾기
+  private static Account findAccount(String accountNumber) {
+    Account account = null;
+    for (int i = 0; i < accounts.length; i++) {
+      if(accounts[i] != null) {
+        if (accountNumber.equals(accounts[i].getAccountNumber())) {
+          account = accounts[i];
+          break;
+        }
+      }
+    }
+    return account;
+  }
+
+  // 계좌번호로 인덱스 찾기
+  private static int findIndexOfAccount(String accountNumber) {
+    int idx = -1;
+    for (int i = 0; i < accounts.length; i++) {
+      if(accounts[i] != null) {
+        if (accountNumber.equals(accounts[i].getAccountNumber())) {
+          idx = i;
+          break;
+        }
+      }
+    }
+    return idx;
   }
 
   //계좌 생성
