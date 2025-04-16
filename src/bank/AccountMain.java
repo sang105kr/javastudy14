@@ -6,8 +6,9 @@ import java.util.Scanner;
 public class AccountMain {
 
   static Scanner scanner = new Scanner(System.in);
-  static final int ACCOUNT_MAX_SIZE = 3;  // 계좌 개설 개수
+  static final int ACCOUNT_MAX_SIZE = 3;  // 계좌 개설 최대 개수
   static Account[] accounts = new Account[ACCOUNT_MAX_SIZE];
+  static int cntOfAccount;  // 계좌 개설 개수
 
   public static void main(String[] args) {
     boolean stop = false;
@@ -57,45 +58,45 @@ public class AccountMain {
   //계좌 생성
   private static void addAccount() {
     //1) 계좌 개설수 확인
-    int sum = 0;
-    for(Account account : accounts){
-      if(account != null) {
-        sum++;
-      }
-    }
-    if( sum == ACCOUNT_MAX_SIZE){
+    if( ACCOUNT_MAX_SIZE == cntOfAccount){
       System.out.println("계좌 개설수를 초과!");
       return;
     }
     //2) 계좌 개설
-    String accoutName = null;
-    boolean isSame = false;
-    while (!isSame) {
+    String accountName = null;
+    boolean stop = false;
+    while (!stop) {
       System.out.print("예금주명 : ");
-      accoutName = scanner.nextLine();
+      accountName = scanner.nextLine();
 
-      //3) 동명이인 확인
-      for(Account account : accounts){
-        if(account != null) {
-          if(accoutName.equals(account.getAccountName())){
-            System.out.println("동명이인이 존재합니다.");
-            isSame = true;
-            break;
-          }
-        }
-      }
-      if(!isSame){
-        //4) 계좌 개설
+      //2-1) 동명이인 확인
+      if(!existAccountName(accountName)){
+        //2-2) 계좌 개설
         for (int i=0; i<accounts.length; i++) {
           if (accounts[i] == null) {
-            accounts[i] = new Account(accoutName);
+            accounts[i] = new Account(accountName);
+            cntOfAccount++; // 계좌 개설 수 증가
+            stop = true;
             break;
           }
         }
-        break;
-      }
+      }// end of if
     }// end of while
-  }
+  } // end of method
 
+  // 동명이인 체크
+  private static boolean existAccountName(String accountName) {
+    boolean exist = false;
+    for(Account account : accounts){
+      if(account != null) {
+        if(accountName.equals(account.getAccountName())){
+          exist = true;
+          System.out.println("동명이인이 존재합니다.");
+          break;
+        }
+      }
+    }
+    return exist;
+  }
 
 }// end of class
