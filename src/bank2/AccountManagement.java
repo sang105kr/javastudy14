@@ -72,26 +72,12 @@ public class AccountManagement {
 
   // 전제 조회
   void listAccounts() {
+    System.out.printf("사용중인 계좌수 : %s, 잔여계좌수 : %s \n", cntOfAccount, ACCOUNT_MAX_SIZE-cntOfAccount);
     for (int i = 0; i < accounts.length; i++) {
       if(accounts[i] != null){
         System.out.println(accounts[i].getAccountInfo());
       }
     }
-  }
-
-  // 동명이인 체크
-  private boolean existAccountName(String accountName) {
-    boolean exist = false;
-    for(Account account : accounts){
-      if(account != null) {
-        if(accountName.equals(account.getAccountName())){
-          exist = true;
-          System.out.println("동명이인이 존재합니다.");
-          break;
-        }
-      }
-    }
-    return exist;
   }
 
   // 계좌번호로 계좌 찾기
@@ -122,5 +108,19 @@ public class AccountManagement {
     return idx;
   }
 
+  // 동명이인 체크
+  private boolean existAccountName(String accountName) {
+    boolean exist = false;
+    for(Account account : accounts){
+      if(account != null) {
+        if(accountName.equals(account.getAccountName())){
+          exist = true;
+          System.out.println("동명이인이 존재합니다.");
+          break;
+        }
+      }
+    }
+    return exist;
+  }
 
 }

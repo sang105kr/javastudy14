@@ -121,6 +121,7 @@ public class AccountMain {
 
   // 전체조회
   private static void listAccount() {
+    System.out.printf("사용중인 계좌수 : %s, 잔여계좌수 : %s \n", cntOfAccount, ACCOUNT_MAX_SIZE-cntOfAccount);
     for (Account account : accounts) {
       if(account != null){
         System.out.println(account.getAccountInfo());
