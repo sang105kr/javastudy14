@@ -108,4 +108,13 @@ public class Account {
     }
     return str;
   }
+
+  @Override
+  public String toString() {
+    return "Account{" +
+        "accountName='" + accountName + '\'' +
+        ", balance=" + balance +
+        ", accountNumber='" + accountNumber + '\'' +
+        '}';
+  }
 }
